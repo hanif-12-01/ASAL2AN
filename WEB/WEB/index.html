@@ -1,668 +1,129 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clara.com - Asisten AI UMKM</title>
-  <style>
-    body {
-      background: #F9E4D4;
-      font-family: 'Segoe UI', 'Arial', sans-serif;
-      margin: 0;
-      color: #4b2e13;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 32px 0 16px 0;
-    }
-    .logo {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #e94e89;
-      letter-spacing: 1px;
-    }
-    .cta-header {
-      background: #e94e89;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 24px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .cta-header:hover {
-      background: #d13c74;
-    }
-    .hero {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 32px;
-      gap: 32px;
-    }
-    .hero-text {
-      flex: 1 1 350px;
-      min-width: 300px;
-    }
-    .hero-title {
-      font-size: 2.8rem;
-      font-weight: bold;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-    .hero-title .highlight {
-      color: #e94e89;
-    }
-    .hero-desc {
-      font-size: 1.1rem;
-      margin-bottom: 24px;
-      color: #6d4b2f;
-    }
-    .cta-main {
-      background: #e94e89;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      padding: 12px 32px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .cta-main:hover {
-      background: #d13c74;
-    }
-    .hero-img {
-      flex: 1 1 350px;
-      min-width: 300px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .hero-img-placeholder {
-      width: 100%;
-      max-width: 420px;
-      height: 280px;
-      background: #e0e0e0;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      color: #aaa;
-      border: 4px solid #f8dbe6;
-      box-shadow: 0 4px 24px #e94e8922;
-    }
-    .section-title {
-      text-align: center;
-      font-size: 2.2rem;
-      font-weight: bold;
-      margin: 64px 0 8px 0;
-    }
-    .section-desc {
-      text-align: center;
-      color: #6d4b2f;
-      margin-bottom: 32px;
-    }
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      justify-content: center;
-      margin-bottom: 48px;
-    }
-    .feature-card {
-      background: #fdf7ec;
-      border-radius: 16px;
-      box-shadow: 0 2px 8px #e0cfc0aa;
-      padding: 32px 24px 24px 24px;
-      flex: 1 1 220px;
-      max-width: 260px;
-      min-width: 200px;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    .feature-icon {
-      background: #f8dbe6;
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 12px auto;
-      font-size: 2rem;
-      color: #e94e89;
-    }
-    .feature-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    .feature-desc {
-      color: #6d4b2f;
-      font-size: 1rem;
-    }
-    .why-section {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      margin: 64px 0 48px 0;
-    }
-    .why-img {
-      flex: 1 1 320px;
-      min-width: 240px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .why-img-placeholder {
-      width: 320px;
-      height: 380px;
-      background: #e0e0e0;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: #aaa;
-      border: 4px solid #f8dbe6;
-      box-shadow: 0 4px 24px #e94e8922;
-    }
-    .why-content {
-      flex: 2 1 400px;
-      min-width: 280px;
-    }
-    .why-title {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 16px;
-    }
-    .why-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 24px 0;
-    }
-    .why-list li {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 14px;
-      font-size: 1.08rem;
-      color: #6d4b2f;
-    }
-    .why-list .arrow {
-      color: #e94e89;
-      margin-right: 10px;
-      font-size: 1.2rem;
-      margin-top: 2px;
-    }
-    .cta-why {
-      background: #e94e89;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      padding: 12px 32px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .cta-why:hover {
-      background: #d13c74;
-    }
-    .contact-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 64px 0 48px 0;
-    }
-    .contact-card {
-      background: #fffaf5;
-      border-radius: 16px;
-      box-shadow: 0 2px 8px #e0cfc0aa;
-      padding: 40px 32px 32px 32px;
-      max-width: 700px;
-      width: 100%;
-      border: 1px solid #f0e6d8;
-    }
-    .contact-title {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 32px;
-    }
-    .contact-form label {
-      font-weight: 600;
-      margin-bottom: 6px;
-      display: block;
-      color: #4b2e13;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: 1px solid #f0e6d8;
-      background: #fdf7ec;
-      margin-bottom: 18px;
-      font-size: 1rem;
-      font-family: inherit;
-      resize: none;
-      box-sizing: border-box;
-      color: #4b2e13;
-    }
-    .contact-form textarea {
-      min-height: 90px;
-    }
-    .contact-form button {
-      width: 100%;
-      background: #e94e89;
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 16px 0;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .contact-form button:hover {
-      background: #d13c74;
-    }
-    .team-section {
-      background: #fffaf5;
-      border-radius: 16px;
-      box-shadow: 0 2px 8px #e0cfc0aa;
-      padding: 40px 32px 32px 32px;
-      max-width: 1100px;
-      min-width: 950px;
-      margin: 40px auto;
-      border: 1px solid #f0e6d8;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .team-title {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 12px;
-      color: #4b2e13;
-    }
-    .team-info-bar {
-      background: none;
-      color: inherit;
-      border: none;
-      border-radius: 0;
-      padding: 0;
-      text-align: center;
-      margin-bottom: 32px;
-      font-size: 1.1rem;
-    }
-    .team-cards {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 24px;
-      justify-content: center;
-      overflow-x: unset;
-    }
-    .team-card {
-      background: #fffaf5;
-      border-radius: 16px;
-      box-shadow: 0 2px 8px #e0cfc0aa;
-      padding: 24px 18px 18px 18px;
-      width: 300px;
-      min-width: 260px;
-      flex: 0 0 300px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: 1px solid #f0e6d8;
-    }
-    .team-photo {
-      width: 90px;
-      height: 160px;
-      background: #e0e0e0;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      color: #aaa;
-      margin-bottom: 12px;
-    }
-    .team-name {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #6d4b2f;
-      margin-bottom: 12px;
-      text-align: center;
-    }
-    .team-form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .team-form label {
-      font-weight: 600;
-      color: #4b2e13;
-      margin-bottom: 2px;
-      font-size: 0.98rem;
-    }
-    .team-form input,
-    .team-form textarea {
-      width: 100%;
-      padding: 8px 10px;
-      border-radius: 8px;
-      border: 1px solid #f0e6d8;
-      background: #fdf7ec;
-      margin-bottom: 8px;
-      font-size: 1rem;
-      font-family: inherit;
-      resize: none;
-      box-sizing: border-box;
-      color: #4b2e13;
-    }
-    .team-form textarea {
-      min-height: 48px;
-    }
-    .team-form button {
-      width: 100%;
-      background: #e94e89;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      padding: 10px 0;
-      font-size: 1.05rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 6px;
-    }
-    .team-form button:hover {
-      background: #d13c74;
-    }
-    @media (max-width: 900px) {
-      .hero, .why-section {
-        flex-direction: column;
-        gap: 24px;
-      }
-      .features {
-        flex-direction: column;
-        gap: 16px;
-      }
-      .team-cards {
-        flex-wrap: wrap;
-        flex-direction: row;
-        gap: 16px;
-        justify-content: center;
-      }
-    }
-    @media (max-width: 600px) {
-      .container {
-        padding: 0 4px;
-      }
-      .contact-card {
-        padding: 24px 6px 18px 6px;
-      }
-      .hero-title, .section-title, .contact-title, .why-title {
-        font-size: 1.3rem;
-      }
-    }
-    .animated-fadein {
-      opacity: 0;
-      animation: fadeIn 1.2s ease forwards;
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-    .animated-slideup {
-      opacity: 0;
-      transform: translateY(40px);
-      animation: slideUp 1.2s cubic-bezier(.23,1.01,.32,1) forwards;
-    }
-    @keyframes slideUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .highlight {
-      color: #e94e89;
-      background: linear-gradient(90deg, #F9E4D4 40%, #e94e89 60%, #F9E4D4 100%);
-      background-size: 200% 100%;
-      background-position: 100% 0;
-      transition: background-position 0.8s cubic-bezier(.23,1.01,.32,1);
-      padding: 0 4px;
-      border-radius: 4px;
-      animation: highlightAnim 2s ease-in-out 1.2s 1 forwards;
-    }
-    @keyframes highlightAnim {
-      from { background-position: 100% 0; }
-      to { background-position: 0 0; }
-    }
-    /* Typing effect */
-    .typing-cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1em;
-      background: #e94e89;
-      margin-left: 2px;
-      animation: blink 0.7s steps(1) infinite;
-      vertical-align: middle;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    /* Splash Clara */
-    #splash-clara {
-      position: fixed;
-      z-index: 9999;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: #F9E4D4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.7s;
-    }
-    #splash-clara.hide {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .clara-splash-img {
-      width: 500px;
-      height: auto;
-      animation: splashPop 1.2s cubic-bezier(.23,1.01,.32,1);
-    }
-    @keyframes splashPop {
-      0% { transform: scale(0.7); opacity: 0; }
-      60% { transform: scale(1.1); opacity: 1; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    /* Logo Clara di Atas Header */
-    .clara-logo-top {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 18px;
-      margin-bottom: 0;
-    }
-    .clara-logo-img {
-      width: 90px;
-      height: auto;
-      filter: drop-shadow(0 2px 8px #e0cfc044);
-    }
-    .clara-header-img {
-      width: 48px;
-      height: auto;
-      vertical-align: middle;
-      margin-right: 10px;
-    }
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .clara-header-img {
-      width: 48px;
-      height: auto;
-      vertical-align: middle;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clara - Asisten Keuangan Usaha Mikro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Splash Screen Clara -->
-  <div id="splash-clara">
-    <img src="Clara.png" alt="Clara" class="clara-splash-img" />
-  </div>
-  <div class="container">
-    <header>
-      <div class="logo">Clara.com</div>
-      <div class="header-right">
-        <img src="Clara.png" alt="Clara" class="clara-header-img" />
-        <button class="cta-header">Coba Sekarang</button>
-      </div>
-    </header>
+    <main>
+        <section id="hero" class="container">
+            <div class="hero-text">
+                <h2>Ubah Obrolan Jadi Laporan Keuangan</h2>
+                <p class="fungsi">
+                    Clara adalah asisten keuangan pribadi berbasis AI yang dirancang khusus untuk memberdayakan usaha mikro di Indonesia. Ubah pencatatan keuangan yang rumit menjadi dialog sederhana dan buka akses ke pembiayaan formal.
+                </p>
+            </div>
+            <div class="hero-preview">
+                <img src="https://storage.googleapis.com/gemini-prod/images/e990b79e-4e42-4f05-b778-95388c6ef0c2" alt="App Preview">
+            </div>
+        </section>
 
-    <section class="hero">
-      <div class="hero-text">
-        <div class="hero-title animated-fadein" id="typing-title"></div>
-        <div class="hero-desc animated-slideup">Clara adalah asisten AI cerdas yang dirancang khusus untuk membantu pemilik UMKM mengelola bisnis dengan lebih efisien, dari pencatatan keuangan, prediksi penjualan, analisis data, prediksi tren, hingga interaksi chat AI untuk pengambilan keputusan yang lebih baik.</div>
-        <button class="cta-main">Pelajari Lebih Lanjut</button>
-      </div>
-      <div class="hero-img">
-        <div class="hero-img-placeholder">600 × 400</div>
-      </div>
-    </section>
+        <section id="features" class="container">
+            <h2>Fitur Unggulan Clara</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>A. Chatbot Pencatatan AI</h3>
+                    <p>Catat pemasukan, pengeluaran, dan utang semudah mengobrol. Clara mengerti bahasa sehari-hari seperti "Hari ini dapat 500 ribu, terus beli gula 50 ribu."</p>
+                </div>
+                <div class="feature-card">
+                    <h3>B. Laporan Keuangan Otomatis</h3>
+                    <p>Dapatkan laporan laba rugi, arus kas, dan daftar utang-piutang dalam format PDF yang rapi, siap untuk pengajuan pinjaman.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>C. Analisis & Saran Bisnis</h3>
+                    <p>Clara menganalisis data keuangan Anda dan memberikan saran cerdas untuk meningkatkan keuntungan dan mengelola stok.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>D. Panduan Pinjaman Bank</h3>
+                    <p>Fitur "Skor Kepercayaan Clara" membantu Anda memahami kelayakan kredit dan memandu Anda langkah demi langkah dalam proses pengajuan KUR.</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="section-title animated-fadein">Fitur Unggulan Clara</div>
-    <div class="section-desc animated-slideup">Semua yang Anda butuhkan untuk mengembangkan bisnis dalam satu platform.</div>
-    <section class="features">
-      <div class="feature-card">
-        <div class="feature-icon">💬</div>
-        <div class="feature-title">Chat AI</div>
-        <div class="feature-desc">Tanyakan apa saja tentang bisnis Anda. Dapatkan jawaban dan insight instan dari AI yang mengerti data Anda.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📈</div>
-        <div class="feature-title">Income History</div>
-        <div class="feature-desc">Lacak riwayat pendapatan dengan mudah. Pahami kesehatan finansial bisnis Anda dari waktu ke waktu.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🏦</div>
-        <div class="feature-title">Bank</div>
-        <div class="feature-desc">Hubungkan rekening bank Anda untuk rekonsiliasi otomatis dan manajemen arus kas yang lebih baik.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <div class="feature-title">Prediction</div>
-        <div class="feature-desc">Gunakan kekuatan AI untuk memprediksi penjualan dan tren masa depan, bantu Anda siapkan strategi.</div>
-      </div>
-    </section>
+        <section id="why-clara" class="container">
+            <div class="why-clara-image">
+                <img src="https://storage.googleapis.com/gemini-prod/images/c0a6b579-a78b-4b15-bb82-208ed353a479" alt="Clara Avatar">
+            </div>
+            <div class="why-clara-text">
+                <h2>Alasan Kenapa Clara Lebih Bagus?</h2>
+                <ul>
+                    <li><strong>Aksesibilitas Radikal:</strong> Dirancang khusus untuk pengguna usia 40+ dengan antarmuka percakapan yang ramah dan desain yang mudah diakses.</li>
+                    <li><strong>Pemberdayaan Melalui Wawasan:</strong> Bukan hanya mencatat, Clara menerjemahkan data menjadi saran bisnis yang memotivasi dan dapat ditindaklanjuti.</li>
+                    <li><strong>Jembatan Inklusi Keuangan:</strong> Secara aktif mempersiapkan dan membimbing Anda untuk mendapatkan akses ke pembiayaan formal dari bank dengan percaya diri.</li>
+                </ul>
+                <a href="#contact" class="cta-button">Ayo Coba Clara!!!</a>
+            </div>
+        </section>
+    </main>
 
-    <section class="why-section">
-      <div class="why-img">
-        <div class="why-img-placeholder">500 × 600</div>
-      </div>
-      <div class="why-content">
-        <div class="why-title animated-fadein">Alasan Kenapa Clara Lebih Bagus?</div>
-        <ul class="why-list">
-          <li><span class="arrow">➔</span>Dibuat khusus untuk UMKM Indonesia, mengerti tantangan dan kebutuhan lokal.</li>
-          <li><span class="arrow">➔</span>Integrasi AI yang canggih namun mudah digunakan, tanpa perlu keahlian teknis.</li>
-          <li><span class="arrow">➔</span>Visualisasi data yang intuitif membantu Anda memahami angka dengan cepat.</li>
-        </ul>
-        <button class="cta-why">Ayo Coba Clara!!!</button>
-      </div>
-    </section>
-
-    <section class="contact-section">
-      <div class="team-section">
-        <div class="team-title animated-fadein">Tim Kami</div>
-        <div class="team-cards">
-          <div class="team-card">
-            <div class="team-photo">90 × 160</div>
-            <div class="team-name">Renisa</div>
-            <form class="team-form">
-              <label>Institusi</label>
-              <input type="text" placeholder="Telkom University PURWOKERTO" required>
-              <label>Email</label>
-              <input type="email" placeholder="Email" required>
-              <label>Pesan</label>
-              <textarea placeholder="Pesan" required></textarea>
-              <button type="submit">Kirim Pesan</button>
+    <footer id="contact">
+        <div class="container">
+            <h2>Contact For Us</h2>
+            <form>
+                <input type="text" name="nama" placeholder="Nama Anda" required>
+                <input type="email" name="email" placeholder="Email Anda" required>
+                <button type="submit" class="cta-button">Kirim</button>
             </form>
-          </div>
-          <div class="team-card">
-            <div class="team-photo">90 × 160</div>
-            <div class="team-name">Arkan</div>
-            <form class="team-form">
-              <label>Institusi</label>
-              <input type="text" placeholder="Telkom University PURWOKERTO" required>
-              <label>Email</label>
-              <input type="email" placeholder="Email" required>
-              <label>Pesan</label>
-              <textarea placeholder="Pesan" required></textarea>
-              <button type="submit">Kirim Pesan</button>
-            </form>
-          </div>
-          <div class="team-card">
-            <div class="team-photo">90 × 160</div>
-            <div class="team-name">Hanif</div>
-            <form class="team-form">
-              <label>Institusi</label>
-              <input type="text" placeholder="Telkom University PURWOKERTO" required>
-              <label>Email</label>
-              <input type="email" placeholder="Email" required>
-              <label>Pesan</label>
-              <textarea placeholder="Pesan" required></textarea>
-              <button type="submit">Kirim Pesan</button>
-            </form>
-          </div>
         </div>
-      </div>
-    </section>
-  </div>
-  <script>
-    // Typing effect untuk judul utama
-    const typingText = 'Majukan UMKM Anda Bersama <span class="highlight">Clara</span>';
-    const typingTarget = document.getElementById('typing-title');
-    let i = 0;
-    function typeChar() {
-      typingTarget.innerHTML = typingText.slice(0, i) + '<span class="typing-cursor"></span>';
-      if (i < typingText.length) {
-        i++;
-        setTimeout(typeChar, 38);
-      } else {
-        typingTarget.innerHTML = typingText;
+    </footer>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          var splash = document.getElementById('splash-clara');
+          if(splash) splash.style.display = 'none';
+        }, 1500);
+      });
+    </script>
+
+    <script>
+    // Efek ketik pada judul hero
+    document.addEventListener('DOMContentLoaded', function() {
+      var heroTitle = document.querySelector('#hero .hero-text h2');
+      if(heroTitle) {
+        var text = heroTitle.textContent;
+        heroTitle.textContent = '';
+        let i = 0;
+        function typeChar() {
+          heroTitle.textContent = text.slice(0, i);
+          if(i < text.length) {
+            i++;
+            setTimeout(typeChar, 38);
+          }
+        }
+        typeChar();
       }
-    }
-    typeChar();
-  </script>
-  <script>
-    window.addEventListener('DOMContentLoaded', function() {
-      setTimeout(function() {
-        document.getElementById('splash-clara').classList.add('hide');
-      }, 1800);
     });
-  </script>
+
+    // Notifikasi sukses pada submit form
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.querySelector('footer form');
+      if(form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var notif = document.createElement('div');
+          notif.textContent = 'Terima kasih! Pesan Anda sudah terkirim.';
+          notif.style.background = '#E94E89';
+          notif.style.color = '#fff';
+          notif.style.padding = '14px 24px';
+          notif.style.borderRadius = '8px';
+          notif.style.margin = '18px auto 0';
+          notif.style.maxWidth = '350px';
+          notif.style.textAlign = 'center';
+          notif.style.fontWeight = '600';
+          notif.style.boxShadow = '0 4px 16px rgba(233,78,137,0.13)';
+          form.parentNode.insertBefore(notif, form.nextSibling);
+          setTimeout(function(){ notif.remove(); }, 3000);
+          form.reset();
+        });
+      }
+    });
+    </script>
+
 </body>
 </html> 
