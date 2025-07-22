@@ -426,21 +426,127 @@
         font-size: 1.3rem;
       }
     }
+    .animated-fadein {
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    .animated-slideup {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: slideUp 1.2s cubic-bezier(.23,1.01,.32,1) forwards;
+    }
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .highlight {
+      color: #e94e89;
+      background: linear-gradient(90deg, #F9E4D4 40%, #e94e89 60%, #F9E4D4 100%);
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      transition: background-position 0.8s cubic-bezier(.23,1.01,.32,1);
+      padding: 0 4px;
+      border-radius: 4px;
+      animation: highlightAnim 2s ease-in-out 1.2s 1 forwards;
+    }
+    @keyframes highlightAnim {
+      from { background-position: 100% 0; }
+      to { background-position: 0 0; }
+    }
+    /* Typing effect */
+    .typing-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: #e94e89;
+      margin-left: 2px;
+      animation: blink 0.7s steps(1) infinite;
+      vertical-align: middle;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    /* Splash Clara */
+    #splash-clara {
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #F9E4D4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.7s;
+    }
+    #splash-clara.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .clara-splash-img {
+      width: 500px;
+      height: auto;
+      animation: splashPop 1.2s cubic-bezier(.23,1.01,.32,1);
+    }
+    @keyframes splashPop {
+      0% { transform: scale(0.7); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    /* Logo Clara di Atas Header */
+    .clara-logo-top {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 18px;
+      margin-bottom: 0;
+    }
+    .clara-logo-img {
+      width: 90px;
+      height: auto;
+      filter: drop-shadow(0 2px 8px #e0cfc044);
+    }
+    .clara-header-img {
+      width: 48px;
+      height: auto;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .clara-header-img {
+      width: 48px;
+      height: auto;
+      vertical-align: middle;
+    }
   </style>
 </head>
 <body>
+  <!-- Splash Screen Clara -->
+  <div id="splash-clara">
+    <img src="Clara.png" alt="Clara" class="clara-splash-img" />
+  </div>
   <div class="container">
     <header>
       <div class="logo">Clara.com</div>
-      <button class="cta-header">Coba Sekarang</button>
+      <div class="header-right">
+        <img src="Clara.png" alt="Clara" class="clara-header-img" />
+        <button class="cta-header">Coba Sekarang</button>
+      </div>
     </header>
 
     <section class="hero">
       <div class="hero-text">
-        <div class="hero-title">Majukan UMKM Anda Bersama <span class="highlight">Clara</span></div>
-        <div class="hero-desc">
-          Clara adalah asisten AI cerdas yang dirancang khusus untuk membantu pemilik UMKM mengelola bisnis dengan lebih efisien, dari pencatatan keuangan, prediksi penjualan, analisis data, prediksi tren, hingga interaksi chat AI untuk pengambilan keputusan yang lebih baik.
-        </div>
+        <div class="hero-title animated-fadein" id="typing-title"></div>
+        <div class="hero-desc animated-slideup">Clara adalah asisten AI cerdas yang dirancang khusus untuk membantu pemilik UMKM mengelola bisnis dengan lebih efisien, dari pencatatan keuangan, prediksi penjualan, analisis data, prediksi tren, hingga interaksi chat AI untuk pengambilan keputusan yang lebih baik.</div>
         <button class="cta-main">Pelajari Lebih Lanjut</button>
       </div>
       <div class="hero-img">
@@ -448,8 +554,8 @@
       </div>
     </section>
 
-    <div class="section-title">Fitur Unggulan Clara</div>
-    <div class="section-desc">Semua yang Anda butuhkan untuk mengembangkan bisnis dalam satu platform.</div>
+    <div class="section-title animated-fadein">Fitur Unggulan Clara</div>
+    <div class="section-desc animated-slideup">Semua yang Anda butuhkan untuk mengembangkan bisnis dalam satu platform.</div>
     <section class="features">
       <div class="feature-card">
         <div class="feature-icon">💬</div>
@@ -478,7 +584,7 @@
         <div class="why-img-placeholder">500 × 600</div>
       </div>
       <div class="why-content">
-        <div class="why-title">Alasan Kenapa Clara Lebih Bagus?</div>
+        <div class="why-title animated-fadein">Alasan Kenapa Clara Lebih Bagus?</div>
         <ul class="why-list">
           <li><span class="arrow">➔</span>Dibuat khusus untuk UMKM Indonesia, mengerti tantangan dan kebutuhan lokal.</li>
           <li><span class="arrow">➔</span>Integrasi AI yang canggih namun mudah digunakan, tanpa perlu keahlian teknis.</li>
@@ -490,14 +596,14 @@
 
     <section class="contact-section">
       <div class="team-section">
-        <div class="team-title">Tim Kami</div>
+        <div class="team-title animated-fadein">Tim Kami</div>
         <div class="team-cards">
           <div class="team-card">
             <div class="team-photo">90 × 160</div>
             <div class="team-name">Renisa</div>
             <form class="team-form">
-              <label>Institusi / Usaha</label>
-              <input type="text" placeholder="Institusi / Usaha" required>
+              <label>Institusi</label>
+              <input type="text" placeholder="Telkom University PURWOKERTO" required>
               <label>Email</label>
               <input type="email" placeholder="Email" required>
               <label>Pesan</label>
@@ -509,8 +615,8 @@
             <div class="team-photo">90 × 160</div>
             <div class="team-name">Arkan</div>
             <form class="team-form">
-              <label>Institusi / Usaha</label>
-              <input type="text" placeholder="Institusi / Usaha" required>
+              <label>Institusi</label>
+              <input type="text" placeholder="Telkom University PURWOKERTO" required>
               <label>Email</label>
               <input type="email" placeholder="Email" required>
               <label>Pesan</label>
@@ -522,8 +628,8 @@
             <div class="team-photo">90 × 160</div>
             <div class="team-name">Hanif</div>
             <form class="team-form">
-              <label>Institusi / Usaha</label>
-              <input type="text" placeholder="Institusi / Usaha" required>
+              <label>Institusi</label>
+              <input type="text" placeholder="Telkom University PURWOKERTO" required>
               <label>Email</label>
               <input type="email" placeholder="Email" required>
               <label>Pesan</label>
@@ -535,5 +641,28 @@
       </div>
     </section>
   </div>
+  <script>
+    // Typing effect untuk judul utama
+    const typingText = 'Majukan UMKM Anda Bersama <span class="highlight">Clara</span>';
+    const typingTarget = document.getElementById('typing-title');
+    let i = 0;
+    function typeChar() {
+      typingTarget.innerHTML = typingText.slice(0, i) + '<span class="typing-cursor"></span>';
+      if (i < typingText.length) {
+        i++;
+        setTimeout(typeChar, 38);
+      } else {
+        typingTarget.innerHTML = typingText;
+      }
+    }
+    typeChar();
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        document.getElementById('splash-clara').classList.add('hide');
+      }, 1800);
+    });
+  </script>
 </body>
 </html> 
