@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clara.com - Asisten AI UMKM</title>
+  <style>
+    body {
+      background: #F9E4D4;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      margin: 0;
+      color: #4b2e13;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 0 16px 0;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #e94e89;
+      letter-spacing: 1px;
+    }
+    .cta-header {
+      background: #e94e89;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cta-header:hover {
+      background: #d13c74;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 32px;
+      gap: 32px;
+    }
+    .hero-text {
+      flex: 1 1 350px;
+      min-width: 300px;
+    }
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: bold;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero-title .highlight {
+      color: #e94e89;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+      color: #6d4b2f;
+    }
+    .cta-main {
+      background: #e94e89;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cta-main:hover {
+      background: #d13c74;
+    }
+    .hero-img {
+      flex: 1 1 350px;
+      min-width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-img-placeholder {
+      width: 100%;
+      max-width: 420px;
+      height: 280px;
+      background: #e0e0e0;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: #aaa;
+      border: 4px solid #f8dbe6;
+      box-shadow: 0 4px 24px #e94e8922;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin: 64px 0 8px 0;
+    }
+    .section-desc {
+      text-align: center;
+      color: #6d4b2f;
+      margin-bottom: 32px;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .feature-card {
+      background: #fdf7ec;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px #e0cfc0aa;
+      padding: 32px 24px 24px 24px;
+      flex: 1 1 220px;
+      max-width: 260px;
+      min-width: 200px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .feature-icon {
+      background: #f8dbe6;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px auto;
+      font-size: 2rem;
+      color: #e94e89;
+    }
+    .feature-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .feature-desc {
+      color: #6d4b2f;
+      font-size: 1rem;
+    }
+    .why-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      margin: 64px 0 48px 0;
+    }
+    .why-img {
+      flex: 1 1 320px;
+      min-width: 240px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .why-img-placeholder {
+      width: 320px;
+      height: 380px;
+      background: #e0e0e0;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #aaa;
+      border: 4px solid #f8dbe6;
+      box-shadow: 0 4px 24px #e94e8922;
+    }
+    .why-content {
+      flex: 2 1 400px;
+      min-width: 280px;
+    }
+    .why-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+    .why-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+    }
+    .why-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      font-size: 1.08rem;
+      color: #6d4b2f;
+    }
+    .why-list .arrow {
+      color: #e94e89;
+      margin-right: 10px;
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+    .cta-why {
+      background: #e94e89;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cta-why:hover {
+      background: #d13c74;
+    }
+    .contact-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 64px 0 48px 0;
+    }
+    .contact-card {
+      background: #fffaf5;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px #e0cfc0aa;
+      padding: 40px 32px 32px 32px;
+      max-width: 700px;
+      width: 100%;
+      border: 1px solid #f0e6d8;
+    }
+    .contact-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 32px;
+    }
+    .contact-form label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: block;
+      color: #4b2e13;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #f0e6d8;
+      background: #fdf7ec;
+      margin-bottom: 18px;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: none;
+      box-sizing: border-box;
+      color: #4b2e13;
+    }
+    .contact-form textarea {
+      min-height: 90px;
+    }
+    .contact-form button {
+      width: 100%;
+      background: #e94e89;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .contact-form button:hover {
+      background: #d13c74;
+    }
+    .team-section {
+      background: #fffaf5;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px #e0cfc0aa;
+      padding: 40px 32px 32px 32px;
+      max-width: 1100px;
+      min-width: 950px;
+      margin: 40px auto;
+      border: 1px solid #f0e6d8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .team-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+      color: #4b2e13;
+    }
+    .team-info-bar {
+      background: none;
+      color: inherit;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      text-align: center;
+      margin-bottom: 32px;
+      font-size: 1.1rem;
+    }
+    .team-cards {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 24px;
+      justify-content: center;
+      overflow-x: unset;
+    }
+    .team-card {
+      background: #fffaf5;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px #e0cfc0aa;
+      padding: 24px 18px 18px 18px;
+      width: 300px;
+      min-width: 260px;
+      flex: 0 0 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #f0e6d8;
+    }
+    .team-photo {
+      width: 128px;
+      height: 128px;
+      background: #e0e0e0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+    .team-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #6d4b2f;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .team-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .team-form label {
+      font-weight: 600;
+      color: #4b2e13;
+      margin-bottom: 2px;
+      font-size: 0.98rem;
+    }
+    .team-form input,
+    .team-form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #f0e6d8;
+      background: #fdf7ec;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: none;
+      box-sizing: border-box;
+      color: #4b2e13;
+    }
+    .team-form textarea {
+      min-height: 48px;
+    }
+    .team-form button {
+      width: 100%;
+      background: #e94e89;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 6px;
+    }
+    .team-form button:hover {
+      background: #d13c74;
+    }
+    @media (max-width: 900px) {
+      .hero, .why-section {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .features {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .team-cards {
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 16px;
+        justify-content: center;
+      }
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 4px;
+      }
+      .contact-card {
+        padding: 24px 6px 18px 6px;
+      }
+      .hero-title, .section-title, .contact-title, .why-title {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">Clara.com</div>
+      <button class="cta-header">Coba Sekarang</button>
+    </header>
+
+    <section class="hero">
+      <div class="hero-text">
+        <div class="hero-title">Majukan UMKM Anda Bersama <span class="highlight">Clara</span></div>
+        <div class="hero-desc">
+          Clara adalah asisten AI cerdas yang dirancang khusus untuk membantu pemilik UMKM mengelola bisnis dengan lebih efisien, dari pencatatan keuangan, prediksi penjualan, analisis data, prediksi tren, hingga interaksi chat AI untuk pengambilan keputusan yang lebih baik.
+        </div>
+        <button class="cta-main">Pelajari Lebih Lanjut</button>
+      </div>
+      <div class="hero-img">
+        <div class="hero-img-placeholder">600 × 400</div>
+      </div>
+    </section>
+
+    <div class="section-title">Fitur Unggulan Clara</div>
+    <div class="section-desc">Semua yang Anda butuhkan untuk mengembangkan bisnis dalam satu platform.</div>
+    <section class="features">
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <div class="feature-title">Chat AI</div>
+        <div class="feature-desc">Tanyakan apa saja tentang bisnis Anda. Dapatkan jawaban dan insight instan dari AI yang mengerti data Anda.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <div class="feature-title">Income History</div>
+        <div class="feature-desc">Lacak riwayat pendapatan dengan mudah. Pahami kesehatan finansial bisnis Anda dari waktu ke waktu.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏦</div>
+        <div class="feature-title">Bank</div>
+        <div class="feature-desc">Hubungkan rekening bank Anda untuk rekonsiliasi otomatis dan manajemen arus kas yang lebih baik.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">Prediction</div>
+        <div class="feature-desc">Gunakan kekuatan AI untuk memprediksi penjualan dan tren masa depan, bantu Anda siapkan strategi.</div>
+      </div>
+    </section>
+
+    <section class="why-section">
+      <div class="why-img">
+        <div class="why-img-placeholder">500 × 600</div>
+      </div>
+      <div class="why-content">
+        <div class="why-title">Alasan Kenapa Clara Lebih Bagus?</div>
+        <ul class="why-list">
+          <li><span class="arrow">➔</span>Dibuat khusus untuk UMKM Indonesia, mengerti tantangan dan kebutuhan lokal.</li>
+          <li><span class="arrow">➔</span>Integrasi AI yang canggih namun mudah digunakan, tanpa perlu keahlian teknis.</li>
+          <li><span class="arrow">➔</span>Visualisasi data yang intuitif membantu Anda memahami angka dengan cepat.</li>
+        </ul>
+        <button class="cta-why">Ayo Coba Clara!!!</button>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="team-section">
+        <div class="team-title">Tim Kami</div>
+        <div class="team-cards">
+          <div class="team-card">
+            <div class="team-photo">128 × 128</div>
+            <div class="team-name">Renisa</div>
+            <form class="team-form">
+              <label>Institusi / Usaha</label>
+              <input type="text" placeholder="Institusi / Usaha" required>
+              <label>Email</label>
+              <input type="email" placeholder="Email" required>
+              <label>Pesan</label>
+              <textarea placeholder="Pesan" required></textarea>
+              <button type="submit">Kirim Pesan</button>
+            </form>
+          </div>
+          <div class="team-card">
+            <div class="team-photo">128 × 128</div>
+            <div class="team-name">Arkan</div>
+            <form class="team-form">
+              <label>Institusi / Usaha</label>
+              <input type="text" placeholder="Institusi / Usaha" required>
+              <label>Email</label>
+              <input type="email" placeholder="Email" required>
+              <label>Pesan</label>
+              <textarea placeholder="Pesan" required></textarea>
+              <button type="submit">Kirim Pesan</button>
+            </form>
+          </div>
+          <div class="team-card">
+            <div class="team-photo">128 × 128</div>
+            <div class="team-name">Hanif</div>
+            <form class="team-form">
+              <label>Institusi / Usaha</label>
+              <input type="text" placeholder="Institusi / Usaha" required>
+              <label>Email</label>
+              <input type="email" placeholder="Email" required>
+              <label>Pesan</label>
+              <textarea placeholder="Pesan" required></textarea>
+              <button type="submit">Kirim Pesan</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html> 
