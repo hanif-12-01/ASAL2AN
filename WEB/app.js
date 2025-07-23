@@ -12,19 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const reveals = document.querySelectorAll('.reveal');
     const rippleButtons = document.querySelectorAll('.cta-button, .clara-chatbot-form button, #clara-chatbot-btn');
 
-    // --- Dark Mode ---
-    function setDarkMode(on) {
-        document.body.classList.toggle('darkmode', on);
-        if (darkBtn) darkBtn.textContent = on ? '☀️' : '🌙';
-        localStorage.setItem('clara-darkmode', on ? '1' : '0');
-    }
-    if (darkBtn) {
-        darkBtn.onclick = () => setDarkMode(!document.body.classList.contains('darkmode'));
-        if (localStorage.getItem('clara-darkmode') === '1') {
-            setDarkMode(true);
-        }
-    }
-
     // --- Typing Effect ---
     if (heroTitle) {
         const text = heroTitle.textContent;
@@ -59,31 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(function(){ notif.remove(); }, 3000);
             contactForm.reset();
         });
-    }
-
-    // --- Chatbot Interactivity ---
-    if (chatbotBtn && chatbotModal && chatbotClose && chatbotForm) {
-        const messages = chatbotModal.querySelector('.clara-chatbot-messages');
-        chatbotBtn.onclick = () => { chatbotModal.style.display = 'flex'; };
-        chatbotClose.onclick = () => { chatbotModal.style.display = 'none'; };
-        window.onclick = (e) => { if (e.target === chatbotModal) chatbotModal.style.display = 'none'; };
-        chatbotForm.onsubmit = function(e) {
-            e.preventDefault();
-            const input = chatbotForm.querySelector('input');
-            const userMsg = document.createElement('div');
-            userMsg.className = 'clara-msg clara-msg-user';
-            userMsg.textContent = input.value;
-            messages.appendChild(userMsg);
-            setTimeout(() => {
-                const botMsg = document.createElement('div');
-                botMsg.className = 'clara-msg clara-msg-bot';
-                botMsg.textContent = 'Clara: Maaf, fitur chat asli belum tersedia.';
-                messages.appendChild(botMsg);
-                messages.scrollTop = messages.scrollHeight;
-            }, 700);
-            input.value = '';
-            messages.scrollTop = messages.scrollHeight;
-        };
     }
 
     // --- Reveal on Scroll ---
@@ -153,39 +115,6 @@ window.addEventListener('DOMContentLoaded', function() {
   }, 1500);
 });
 
-// Hapus dark mode otomatis berdasarkan jam
-// Tambahkan tombol toggle dark mode manual
-window.addEventListener('DOMContentLoaded', function() {
-  // Tambah tombol jika belum ada
-  if (!document.getElementById('darkmode-toggle')) {
-    const btn = document.createElement('button');
-    btn.id = 'darkmode-toggle';
-    btn.setAttribute('aria-label', 'Toggle Dark Mode');
-    btn.style.position = 'fixed';
-    btn.style.top = '18px';
-    btn.style.right = '18px';
-    btn.style.zIndex = '1200';
-    btn.style.background = '#fff';
-    btn.style.borderRadius = '50%';
-    btn.style.border = '1.5px solid #E94E89';
-    btn.style.padding = '8px 12px';
-    btn.style.boxShadow = '0 2px 8px #e94e8922';
-    btn.style.cursor = 'pointer';
-    btn.style.fontSize = '1.2rem';
-    btn.style.transition = 'background 0.2s';
-    btn.textContent = '🌙';
-    document.body.appendChild(btn);
-  }
-  const darkBtn = document.getElementById('darkmode-toggle');
-  function setDarkMode(on) {
-    document.body.classList.toggle('darkmode', on);
-    darkBtn.textContent = on ? '☀️' : '🌙';
-    localStorage.setItem('clara-darkmode', on ? '1' : '0');
-  }
-  darkBtn.onclick = () => setDarkMode(!document.body.classList.contains('darkmode'));
-  if(localStorage.getItem('clara-darkmode') === '1') setDarkMode(true);
-});
-
 // 2. Typing effect di judul hero
 window.addEventListener('DOMContentLoaded', function() {
   var heroTitle = document.querySelector('.hero-title');
@@ -203,40 +132,6 @@ window.addEventListener('DOMContentLoaded', function() {
       }
     }
     typeChar();
-  }
-});
-
-// 3. Floating Chatbot Button Interactivity
-window.addEventListener('DOMContentLoaded', function() {
-  const btn = document.getElementById('clara-chatbot-btn');
-  const modal = document.getElementById('clara-chatbot-modal');
-  const close = document.querySelector('.clara-modal-close');
-  if(btn && modal && close) {
-    btn.onclick = () => { modal.style.display = 'flex'; };
-    close.onclick = () => { modal.style.display = 'none'; };
-    window.onclick = (e) => { if(e.target === modal) modal.style.display = 'none'; };
-    // Dummy chat
-    const form = document.querySelector('.clara-chatbot-form');
-    const messages = document.querySelector('.clara-chatbot-messages');
-    if(form && messages) {
-      form.onsubmit = function(e) {
-        e.preventDefault();
-        const input = form.querySelector('input');
-        const userMsg = document.createElement('div');
-        userMsg.className = 'clara-msg clara-msg-user';
-        userMsg.textContent = input.value;
-        messages.appendChild(userMsg);
-        setTimeout(() => {
-          const botMsg = document.createElement('div');
-          botMsg.className = 'clara-msg clara-msg-bot';
-          botMsg.textContent = 'Clara: Maaf, fitur chat asli belum tersedia.';
-          messages.appendChild(botMsg);
-          messages.scrollTop = messages.scrollHeight;
-        }, 700);
-        input.value = '';
-        messages.scrollTop = messages.scrollHeight;
-      };
-    }
   }
 });
 
