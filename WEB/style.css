@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&display=swap');
 
 :root {
-  --primary-color: #E94E89;
+  --primary-color: #F573A0;
   --secondary-color: #F9E4D4;
   --dark-color: #4B2E13;
   --light-color: #F9E4D4;
   --text-grey: #6c757d;
   --card-radius: 1.2rem;
   --card-shadow: 0 2px 16px #e9e4d455;
-  --pink-shadow: 0 0 16px #e94e89aa;
+  --pink-shadow: 0 0 16px #f573a0aa;
 }
 
 body {
